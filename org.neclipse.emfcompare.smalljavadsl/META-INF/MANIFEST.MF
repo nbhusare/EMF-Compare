@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMF Compare for SmallJava
+Bundle-SymbolicName: org.neclipse.emfcompare.smalljavadsl
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: NEclipse
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.emf.compare;bundle-version="3.3.0",
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro,
+ org.eclipse.xtext;bundle-version="2.10.0",
+ org.neclipse.xtext.smalljavadsl;bundle-version="1.0.0",
+ org.neclipse.xtext.smalljavadsl.tests;bundle-version="1.0.0",
+ org.eclipse.xtext.junit4;bundle-version="2.10.0"
+

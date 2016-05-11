@@ -1,0 +1,60 @@
+grammar org.neclipse.xtext.smalljavadsl.SmallJavaDsl with org.eclipse.xtext.common.Terminals
+
+generate smallJavaDsl "http://www.neclipse.org/xtext/smalljavadsl/SmallJavaDsl"
+
+Namespace:
+	'namespace' name=QualifedName
+	importDeclaration=ImportDeclaration
+	smallClazz=SmallClazz;
+
+ImportDeclaration:
+	{ImportDeclaration} imports+=Import*;
+
+Import:
+	'import' importedNamespace=QualifedNameWithWildcard;
+
+QualifedName:
+	ID ('.' ID)*;
+
+QualifedNameWithWildcard:
+	QualifedName '.*'?;
+
+SmallClazz:
+	visibility=Visibility 'clazz' name=ID ('extends' superClass=[SmallClazz|ID])? '{'
+	attributes+=Attribute*
+	'}';
+
+enum Visibility:
+	PUBLIC='public' | PRIVATE='private';
+
+Attribute:
+	datatype=DataType (array?='[]')? name=ID;
+
+DataType:
+	BasicType | ClassType;
+
+BasicType:
+	StringType | BooleanType | IntegerType | LongType | DoubleType;
+
+StringType:
+	{StringType}
+	'String';
+
+BooleanType:
+	{BooleanType}
+	'Boolean';
+
+IntegerType:
+	{IntegerType}
+	'Integer';
+
+LongType:
+	{LongType}
+	'Long';
+
+DoubleType:
+	{DoubleType}
+	'Double';
+
+ClassType:
+	type=[SmallClazz|ID];
