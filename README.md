@@ -1,2 +1,13 @@
 # EMF-Compare
 HOW TO : EMF Compare customization
+
+### Project structure
+* **org.neclipse.xtext.smalljavadsl** - This project contains the [grammar](https://github.com/nbhusare/EMF-Compare/blob/master/org.neclipse.xtext.smalljavadsl/src/org/neclipse/xtext/smalljavadsl/SmallJavaDsl.xtext) for a very simple language that allows us to define Java like classes and attribues inside it.
+* **org.neclipse.emfcompare.smalljavadsl** - This project contains EMF Compare customization code. 
+  * We have [customized](https://github.com/nbhusare/EMF-Compare/blob/master/org.neclipse.emfcompare.smalljavadsl/bin/org/neclipse/emfcompare/smalljavadsl/internal/CustomFeatureFilter.xtend) the [FeatureFilter](https://www.eclipse.org/emf/compare/documentation/latest/developer/javadoc/org/eclipse/emf/compare/diff/FeatureFilter.html) to ignore some of the attributes and references of the SmallJava model. What this means is that the compare framework will complete ignore these attributes(EAttribute) and references(EReference) during the matching phase.
+  * Secondly, we have [customized](https://github.com/nbhusare/EMF-Compare/blob/master/org.neclipse.emfcompare.smalljavadsl/bin/org/neclipse/emfcompare/smalljavadsl/internal/CustomDiffBuilder.xtend) the [DiffBuilder](https://www.eclipse.org/emf/compare/documentation/latest/developer/javadoc/org/eclipse/emf/compare/diff/DiffBuilder.html) to ignore the differences that don't make much sense to us. This is quiet useful as it enables us to represent a model change as a single change and not multiple changes.
+  * The [ResourceSetCompare](https://github.com/nbhusare/EMF-Compare/blob/master/org.neclipse.emfcompare.smalljavadsl/bin/org/neclipse/emfcompare/smalljavadsl/internal/ResourceSetCompare.xtend) provides the compare api that takes two instances of ResourceSet and returns the differences. It defines the comparison scope, the custom matcher and configures the EMFCompare. We have ignored the Equliance, Requirements and Conflicts phases as we only need the differences.
+* The [ResourceSetCompareTest](https://github.com/nbhusare/EMF-Compare/blob/master/org.neclipse.emfcompare.smalljavadsl/bin/org/neclipse/emfcompare/smalljavadsl/internal/tests/ResourceSetCompareTest.xtend) contains all the unit-tests. It pretty much covers the important/basic test cases. It makes use of the unit-testing support provided by the xtext framework. Writing the unit-tests in this fashion has been fun and I personally find it easy to maintain. The tests are very clean and self-composed.
+* The [developer guide](https://www.eclipse.org/emf/compare/documentation/latest/developer/developer-guide.html) is an excellent introduction to how the Compare framework can be customized.
+
+
