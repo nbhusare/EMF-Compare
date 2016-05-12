@@ -1,5 +1,4 @@
-# EMF-Compare
-HOW TO : EMF Compare customization
+# HOW TO : EMF Compare customization
 
 ### Project structure
 * **org.neclipse.xtext.smalljavadsl** - This project contains the [grammar](https://github.com/nbhusare/EMF-Compare/blob/master/org.neclipse.xtext.smalljavadsl/src/org/neclipse/xtext/smalljavadsl/SmallJavaDsl.xtext) for a very simple language that allows us to define Java like classes and attribues inside it.
